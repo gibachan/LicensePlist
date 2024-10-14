@@ -10,6 +10,7 @@ let package = Package(
         .plugin(name: "LicensePlistBuildTool", targets: ["LicensePlistBuildTool"]),
         .plugin(name: "GenerateAcknowledgementsCommand", targets: ["GenerateAcknowledgementsCommand"]),
         .plugin(name: "AddAcknowledgementsCopyScriptCommand", targets: ["AddAcknowledgementsCopyScriptCommand"]),
+        .plugin(name: "LicensePlistCommandPlugin", targets: ["AddAcknowledgementsCopyScriptCommand"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser.git",
@@ -83,6 +84,11 @@ let package = Package(
                     .writeToPackageDirectory(reason: "LicensePlist updates project file")
                 ]
             ),
+            dependencies: ["LicensePlistBinary"]
+        ),
+        .plugin(
+            name: "LicensePlistCommandPlugin",
+            capability: .command(intent: .custom(verb: "licenseplist", description: "LicensePlist Command Plugin")),
             dependencies: ["LicensePlistBinary"]
         ),
         .binaryTarget(
