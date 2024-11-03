@@ -55,6 +55,7 @@ extension GitHubLicense {
                     }
                 }
             case .success(let response):
+                // HIT
                 let license = GitHubLicense(library: GitHub(name: library.name,
                                                             nameSpecified: library.nameSpecified,
                                                             owner: library.owner,
