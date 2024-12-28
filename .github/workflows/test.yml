@@ -3,14 +3,14 @@ name: Test
 on:
   pull_request:
   push:
-    branches: main
+    branches: test
 
 jobs:
   test:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
-      - uses: Cyberbeni/install-swift-tool@v3
+      - uses: Cyberbeni/install-swift-tool@v2
         with:
           url: https://github.com/tuist/xcbeautify
           version: '*'
